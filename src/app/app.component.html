@@ -1,3 +1,11 @@
-<h1>
-  {{title}}
-</h1>
+<md-toolbar *ngIf="isAuthenticated | async" color="primary">
+  Game of Giff
+
+  <span class="menu-space-fill"></span>
+
+  <button md-button (click)="signOut()">
+    Sign out
+  </button>
+</md-toolbar>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,19 @@
+:host {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+:host > md-card {
+  background-color: #f1f1f1;
+  height: 100%;
+  padding: 0;
+}
+
+:host md-toolbar button {
+  float: right;
+}
+
+:host md-toolbar .menu-space-fill {
+  flex: 1 1 auto;
+}

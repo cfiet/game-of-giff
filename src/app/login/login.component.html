@@ -1,0 +1,16 @@
+<md-card>
+  <md-card-title>
+    Welcome to the Chat of Giff
+  </md-card-title>
+  <md-card-content>
+    <div *ngIf="!(isAuthenticated | async)">
+      <button md-raised-button color="primary" (click)="googleLogin()">
+        Sign-in using Google Account
+      </button>
+    </div>
+
+    <div *ngIf="isAuthenticated | async">
+      Authorized, redirecting to dashboard...
+    </div>
+  </md-card-content>
+</md-card>

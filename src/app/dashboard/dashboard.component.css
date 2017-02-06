@@ -1,0 +1,22 @@
+:host .games-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+}
+
+:host .games-container > md-card {
+  display: flex-item;
+  min-width: 25vw;
+  max-width: 33vw;
+  min-height: 120px;
+}
+
+:host .games-container > md-card.new-game {
+  padding: 0;
+}
+
+:host .games-container > md-card.new-game button {
+  width: 100%;
+  height: 100%;
+}
