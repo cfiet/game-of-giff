@@ -1,10 +1,17 @@
 <md-card>
-  <h1>Games</h1>
-  <div class="games-container">
-    <md-card class="new-game">
-      <button md-button>
-        <md-icon>add</md-icon>
-      </button>
-    </md-card>
+
+  <div class="loader" *ngIf="loadingCurrentGame | async" @fade>
+    <md-spinner></md-spinner>
+  </div>
+
+  <div class="no-game" *ngIf="!(loadingCurrentGame | async) && !(currentGame | async)">
+    <div class="spinner"><md-spinner *ngIf="creating" @fade></md-spinner></div>
+    <button class="new-game" md-button color="primary" (click)="newGame()"  *ngIf="!creating" @fade>
+      <md-icon>add</md-icon>
+    </button>
+  </div>
+
+  <div class="current-game" *ngIf="!(loadingCurrentGame | async) && (currentGame | async)">
+    In a game!!!!!!!oneoneone
   </div>
 </md-card>

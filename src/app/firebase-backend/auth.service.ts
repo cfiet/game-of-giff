@@ -46,7 +46,7 @@ export class AuthService {
     return !auth || !auth.auth || auth.auth.isAnonymous
       ? undefined
       : <UserData>{
-        uid: auth.auth.uid,
+        uid: auth.uid,
         name: auth.auth.displayName,
         email: auth.auth.email,
         avatarUrl: auth.auth.photoURL,

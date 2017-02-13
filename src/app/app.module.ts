@@ -15,12 +15,14 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { CurrentUserResolver } from './current-user-resolver.service';
 import { IsAuthenticatedGuard } from './is-authenticated-guard.service';
+import { GameMenuComponent } from './game-menu/game-menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    GameMenuComponent
   ],
   imports: [
     BrowserModule,
