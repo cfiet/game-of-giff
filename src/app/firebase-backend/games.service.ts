@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFire, FirebaseObjectObservable } from 'angularfire2';
+import { AngularFire, AngularFireDatabase } from 'angularfire2';
 import { Observable } from 'rxjs';
 
 import { AuthService, UserData } from './auth.service';
@@ -32,11 +32,15 @@ export class GamesService {
 
   constructor(private _af: AngularFire, private _authService: AuthService) {
     this.currentGame = this._authService.currentUser
-      .map(u => <UserGameData>u)
-      .switchMap(u =>
-        (u && u.currentGame)
-          ? _af.database.object(`games/${u.currentGame}`)
-          : Observable.of<Game>(null)
+      .switchMap<UserData, any>(user =>
+        !user
+          ? Observable.of<string>(undefined)
+          : _af.database.object(`/users/${user.uid}/currentGame`)
+      )
+      .switchMap<any, Game>(gameId =>
+        !gameId
+          ? Observable.of<Game>(undefined)
+          : _af.database.object(`/games/${gameId.$value}`)
       )
       .publishBehavior(undefined)
       .refCount();
